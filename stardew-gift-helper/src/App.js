@@ -1,24 +1,43 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { Component } from "react";
+import React, { Component } from "react";
 
 export class App extends Component {
+
+  state = {
+    saveFile: null,
+  };
+
+  onFileChange = (event) => {
+    const eventTarget = event.target;
+    if (eventTarget.files.length) {
+      this.setState({ saveFile: eventTarget.files[0] });
+    }
+  };
+
+  gameSaveData = () => {
+    if (this.state.saveFile) {
+      console.log(this.state.saveFile.name)
+    }
+  };
+
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            Upload your save file.
+            Instructions here.
           </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <div>
+            <input type="file" onChange={this.onFileChange} />
+          </div>
+
+          <div>
+            {this.gameSaveData()}
+          </div>
         </header>
       </div>
     );
