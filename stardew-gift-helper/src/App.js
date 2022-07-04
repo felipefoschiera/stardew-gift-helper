@@ -1,9 +1,9 @@
 import logo from "./logo.svg";
 import "./App.css";
 import React, { Component } from "react";
+import { parseGameFile } from "./parser";
 
 export class App extends Component {
-
   state = {
     saveFile: null,
   };
@@ -17,27 +17,21 @@ export class App extends Component {
 
   gameSaveData = () => {
     if (this.state.saveFile) {
-      console.log(this.state.saveFile.name)
+      parseGameFile(this.state.saveFile);
     }
   };
-
 
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Upload your save file.
-            Instructions here.
-          </p>
+          <p>Upload your save file. Instructions here.</p>
           <div>
             <input type="file" onChange={this.onFileChange} />
           </div>
 
-          <div>
-            {this.gameSaveData()}
-          </div>
+          <div>{this.gameSaveData()}</div>
         </header>
       </div>
     );
