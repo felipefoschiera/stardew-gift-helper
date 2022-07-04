@@ -1,16 +1,16 @@
 {
-  "main.css": "/stardew-gift-helper/static/css/main.51a5b888.chunk.css",
-  "main.js": "/stardew-gift-helper/static/js/main.4048fcc0.chunk.js",
-  "main.js.map": "/stardew-gift-helper/static/js/main.4048fcc0.chunk.js.map",
-  "static/js/1.03ae7ea8.chunk.js": "/stardew-gift-helper/static/js/1.03ae7ea8.chunk.js",
-  "static/js/1.03ae7ea8.chunk.js.map": "/stardew-gift-helper/static/js/1.03ae7ea8.chunk.js.map",
-  "static/js/2.45d599a8.chunk.js": "/stardew-gift-helper/static/js/2.45d599a8.chunk.js",
-  "static/js/2.45d599a8.chunk.js.map": "/stardew-gift-helper/static/js/2.45d599a8.chunk.js.map",
-  "runtime~main.js": "/stardew-gift-helper/static/js/runtime~main.b2db2cd8.js",
-  "runtime~main.js.map": "/stardew-gift-helper/static/js/runtime~main.b2db2cd8.js.map",
-  "static/media/logo.svg": "/stardew-gift-helper/static/media/logo.06e73328.svg",
-  "static/css/main.51a5b888.chunk.css.map": "/stardew-gift-helper/static/css/main.51a5b888.chunk.css.map",
-  "index.html": "/stardew-gift-helper/index.html",
-  "precache-manifest.20a48ee556e5df794b2f4d7f52fd947f.js": "/stardew-gift-helper/precache-manifest.20a48ee556e5df794b2f4d7f52fd947f.js",
-  "service-worker.js": "/stardew-gift-helper/service-worker.js"
+  "files": {
+    "main.css": "/stardew-gift-helper/static/css/main.073c9b0a.css",
+    "main.js": "/stardew-gift-helper/static/js/main.730bdf8e.js",
+    "static/js/787.924496ef.chunk.js": "/stardew-gift-helper/static/js/787.924496ef.chunk.js",
+    "static/media/logo.svg": "/stardew-gift-helper/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/stardew-gift-helper/index.html",
+    "main.073c9b0a.css.map": "/stardew-gift-helper/static/css/main.073c9b0a.css.map",
+    "main.730bdf8e.js.map": "/stardew-gift-helper/static/js/main.730bdf8e.js.map",
+    "787.924496ef.chunk.js.map": "/stardew-gift-helper/static/js/787.924496ef.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.730bdf8e.js"
+  ]
 }
