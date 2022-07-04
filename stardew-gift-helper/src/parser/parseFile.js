@@ -1,3 +1,5 @@
-export const parseGameFile = (gameFile) => {
-    console.log(gameFile.name);
+export const parseGameFileContent = (fileContent) => {
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(fileContent, "text/xml");
+    console.log(xmlDoc);    
 }
