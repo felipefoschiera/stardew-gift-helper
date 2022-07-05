@@ -8,6 +8,7 @@ export function App() {
 
   const startGameProcess = () => {
     const parsedFileContent = parseGameFileContent(fileContent);
+    console.log(parsedFileContent);
   };
 
   useEffect(() => {
@@ -39,9 +40,7 @@ export function App() {
         <div>
           <input type="file" onChange={onFileChange} />
         </div>
-        <div>
-
-        </div>
+        <div></div>
       </header>
     </div>
   );
