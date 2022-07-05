@@ -14,18 +14,40 @@ export const parseGameFileContent = (fileContent) => {
     alwaysChildren: true,
   });
 
-  const locations = getGameLocations(converted);
-  const chests = getAllChests(locations);
-  const chestsItems = getChestsItems(chests);
-
-  const player = getPlayer(converted);
-  const playerItems = getPlayerItems(player);
-
-  const allItems = mergeAllMaps([chestsItems, playerItems]);
+  const allItems = getAllItems(converted);
+  const socialPoints = getSocialPoints(converted);
 
   return {
     items: allItems,
+    socialPoints: socialPoints,
   };
+};
+
+const getAllItems = (content) => {
+  const locations = getGameLocations(content);
+  const chests = getAllChests(locations);
+  const chestsItems = getChestsItems(chests);
+
+  const player = getPlayer(content);
+  const playerItems = getPlayerItems(player);
+
+  return mergeAllMaps([chestsItems, playerItems]);
+};
+
+const getSocialPoints = (content) => {
+  const player = getPlayer(content);
+  return getFriendships(player);
+};
+
+const getFriendships = (player) => {
+  const levelMap = new Map();
+  const data = player["friendshipData"]["item"];
+  for (const npc of data) {
+    const name = npc["key"]["string"]["_text"];
+    const level = parseInt(npc["value"]["Friendship"]["Points"]["_text"]);
+    levelMap[name] = level;
+  }
+  return levelMap;
 };
 
 const mergeAllMaps = (maps) => {
