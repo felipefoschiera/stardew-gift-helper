@@ -1,3 +1,8 @@
+import { getSocialPoints } from "./socialPoints";
+import { getPlayer, getPlayerItems } from "./player";
+import { getAllChests, getChestsItems } from "./chests";
+import { getGameLocations } from "./locations";
+
 var convert = require("xml-js");
 
 /**
@@ -34,22 +39,6 @@ const getAllItems = (content) => {
   return mergeAllMaps([chestsItems, playerItems]);
 };
 
-const getSocialPoints = (content) => {
-  const player = getPlayer(content);
-  return getFriendships(player);
-};
-
-const getFriendships = (player) => {
-  const levelMap = new Map();
-  const data = player["friendshipData"]["item"];
-  for (const npc of data) {
-    const name = npc["key"]["string"]["_text"];
-    const level = parseInt(npc["value"]["Friendship"]["Points"]["_text"]);
-    levelMap[name] = level;
-  }
-  return levelMap;
-};
-
 const mergeAllMaps = (maps) => {
   const finalMap = new Map();
   for (const map of maps) {
@@ -62,87 +51,4 @@ const mergeAllMaps = (maps) => {
     }
   }
   return finalMap;
-};
-
-const getPlayer = (content) => {
-  return content["SaveGame"]["player"];
-};
-
-const getPlayerItems = (player) => {
-  const itemsMap = new Map();
-  const items = player["items"]["Item"];
-  for (const item of items) {
-    if (item["Name"] === undefined) continue;
-    const name = item["Name"]["_text"];
-    const quantity = parseInt(item["Stack"]["_text"]);
-    if (!itemsMap[name]) {
-      itemsMap[name] = quantity;
-    } else {
-      itemsMap[name] += quantity;
-    }
-  }
-  return itemsMap;
-};
-
-const getGameLocations = (content) => {
-  return content["SaveGame"]["locations"]["GameLocation"];
-};
-
-const getAllChests = (locations) => {
-  let allChests = [];
-  for (const gameLocation of locations) {
-    const objects = getLocationObjects(gameLocation);
-    const chests = getLocationChests(objects);
-    allChests = allChests.concat(chests);
-  }
-  return allChests;
-};
-
-const getChestsItems = (chests) => {
-  const itemsMap = new Map();
-  for (const chest of chests) {
-    const items = getChestItems(chest);
-    for (const item of items) {
-      const name = item["Name"]["_text"];
-      const quantity = parseInt(item["Stack"]["_text"]);
-      if (!itemsMap[name]) {
-        itemsMap[name] = quantity;
-      } else {
-        itemsMap[name] += quantity;
-      }
-    }
-  }
-  return itemsMap;
-};
-
-const getChestItems = (chest) => {
-  const items = chest["value"]["Object"]["items"]["Item"];
-  if (Array.isArray(items)) {
-    return items;
-  }
-  if (items === undefined) {
-    return [];
-  }
-  return [items];
-};
-
-const getLocationObjects = (location) => {
-  return location["objects"]["item"];
-};
-
-const getLocationChests = (objects) => {
-  if (objects === undefined) return [];
-  let chests = [];
-  for (const object of objects) {
-    if (object !== undefined) {
-      if (objectIsChest(object)) {
-        chests.push(object);
-      }
-    }
-  }
-  return chests;
-};
-
-const objectIsChest = (object) => {
-  return object["value"]["Object"]["Name"]["_text"] == "Chest";
 };
