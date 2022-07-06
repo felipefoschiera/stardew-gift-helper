@@ -1,14 +1,14 @@
-import logo from "./logo.svg";
 import "./App.css";
 import React, { useEffect, useState } from "react";
 import { parseGameFileContent } from "./parser/parseFile";
 
 export function App() {
   const [fileContent, setFileContent] = useState(null);
+  const [socialPoints, setSocialPoints] = useState([]);
 
   const startGameProcess = () => {
     const parsedFileContent = parseGameFileContent(fileContent);
-    console.log(parsedFileContent);
+    setSocialPoints(parsedFileContent.socialPoints);
   };
 
   useEffect(() => {
@@ -34,14 +34,10 @@ export function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <div>
         <p>Upload your save file. Instructions here.</p>
-        <div>
-          <input type="file" onChange={onFileChange} />
-        </div>
-        <div></div>
-      </header>
+        <input type="file" onChange={onFileChange} />
+      </div>
     </div>
   );
 }

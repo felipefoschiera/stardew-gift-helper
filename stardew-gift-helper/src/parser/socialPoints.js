@@ -6,12 +6,15 @@ export const getSocialPoints = (content) => {
 };
 
 const getFriendships = (player) => {
-  const levelMap = new Map();
+  const levels = [];
   const data = player["friendshipData"]["item"];
   for (const npc of data) {
     const name = npc["key"]["string"]["_text"];
-    const level = parseInt(npc["value"]["Friendship"]["Points"]["_text"]);
-    levelMap[name] = level;
+    const points = parseInt(npc["value"]["Friendship"]["Points"]["_text"]);
+    levels.push({
+      name: name,
+      points: points,
+    });
   }
-  return levelMap;
+  return levels;
 };
