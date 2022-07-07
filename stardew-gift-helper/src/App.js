@@ -1,6 +1,8 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
 import { parseGameFileContent } from "./parser/parseFile";
+import { getFavoriteGifts } from "./gifts/getFavorites";
+import { SocialCard } from "./components";
 
 export function App() {
   const [fileContent, setFileContent] = useState(null);
@@ -8,6 +10,7 @@ export function App() {
 
   const startGameProcess = () => {
     const parsedFileContent = parseGameFileContent(fileContent);
+    console.log(getFavoriteGifts("Alex"));
     setSocialPoints(parsedFileContent.socialPoints);
   };
 
@@ -37,6 +40,11 @@ export function App() {
       <div>
         <p>Upload your save file. Instructions here.</p>
         <input type="file" onChange={onFileChange} />
+        <div>
+          {socialPoints.map((entry) => (
+            <SocialCard key={entry.name} data={entry} />
+          ))}
+        </div>
       </div>
     </div>
   );

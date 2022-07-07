@@ -21,6 +21,7 @@ export const parseGameFileContent = (fileContent) => {
 
   const allItems = getAllItems(converted);
   const socialPoints = getSocialPoints(converted);
+  socialPoints.sort((a, b) => b.points - a.points);
 
   return {
     items: allItems,
