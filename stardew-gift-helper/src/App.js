@@ -47,10 +47,13 @@ export function App() {
   return (
     <div className="App">
       <div>
-        <p>Upload your save file. Cards show social information and favorite villager gifts that you have available.</p>
-        <input type="file" onChange={onFileChange} />
-        <br/>
-        <br/>
+        <div className="page-instructions">
+          <p>
+            Upload your save file. Cards show social information and favorite
+            villager gifts that you have available.
+          </p>
+          <input type="file" onChange={onFileChange} />
+        </div>
         <div>
           {socialPoints.map((entry) => (
             <SocialCard
@@ -60,6 +63,10 @@ export function App() {
               matching={matchingGifts[entry.name]}
             />
           ))}
+        </div>
+        <div className="page-footer">
+          Stardew Gift Helper was created by
+          <a href="https://github.com/felipefoschiera"> @felipefoschiera</a>
         </div>
       </div>
     </div>

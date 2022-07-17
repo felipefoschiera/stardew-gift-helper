@@ -19,7 +19,6 @@
 
 .social-card-gifts {
   flex: 14;
-
 }
 
 .social-card-optimal-gift {
@@ -31,7 +30,6 @@
   display: flex;
   flex-wrap: wrap;
 }
-
 
 .social-card-single-gift {
   border-radius: 6px;

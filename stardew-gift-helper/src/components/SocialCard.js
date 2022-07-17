@@ -4,17 +4,17 @@ import React from "react";
 import FullHeart from "../assets/hearts/FullHeart.png";
 import EmptyHeart from "../assets/hearts/EmptyHeart.png";
 
-const POINTS_BY_HEART = 250
-const TOTAL_HEARTS = 10
+const POINTS_BY_HEART = 250;
+const TOTAL_HEARTS = 10;
 
 export function SocialCard(props) {
   const fullHearts = Math.floor(props.data.points / POINTS_BY_HEART);
-  const pointsToNextLevel = POINTS_BY_HEART - (props.data.points % 250)
+  const pointsToNextLevel = POINTS_BY_HEART - (props.data.points % 250);
 
   const matchingLoved = props.matching.lovedGifts;
   const matchingLiked = props.matching.likedGifts;
   const matchingNeutral = props.matching.neutralGifts;
-  
+
   return (
     <div className="social-card">
       <div className="social-card-piece social-card-npc">
@@ -24,14 +24,15 @@ export function SocialCard(props) {
           <div className="social-card-points">
             {renderSocialHearts(fullHearts)}
           </div>
-          <div className="social-card-remaining-next-level">{pointsToNextLevel} points to next level.</div>
+          <div className="social-card-remaining-next-level">
+            {pointsToNextLevel} points to next level.
+          </div>
         </div>
       </div>
       <div className="social-card-piece social-card-gifts">
         {renderMatchingGifts(matchingLoved, matchingLiked, matchingNeutral)}
       </div>
-      <div className="social-card-piece social-card-optimal-gift">
-      </div>
+      <div className="social-card-piece social-card-optimal-gift"></div>
     </div>
   );
 }
