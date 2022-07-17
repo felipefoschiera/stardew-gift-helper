@@ -1,16 +1,26 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
 import { parseGameFileContent } from "./parser/parseFile";
-import { getFavoriteGifts } from "./gifts/getFavorites";
+import { getAllFavoriteGifts } from "./gifts/getFavorites";
 import { SocialCard } from "./components";
+import { getMatchingGifts } from "./gifts/getMatching";
 
 export function App() {
   const [fileContent, setFileContent] = useState(null);
   const [socialPoints, setSocialPoints] = useState([]);
+  const [favoriteGifts, setFavoriteGifts] = useState({});
+  const [matchingGifts, setMatchingGifts] = useState({});
 
   const startGameProcess = () => {
     const parsedFileContent = parseGameFileContent(fileContent);
     setSocialPoints(parsedFileContent.socialPoints);
+    const allFavoriteGifts = getAllFavoriteGifts();
+    setFavoriteGifts(allFavoriteGifts);
+    const allMatchingGifts = getMatchingGifts(
+      parsedFileContent.items,
+      allFavoriteGifts
+    );
+    setMatchingGifts(allMatchingGifts);
   };
 
   useEffect(() => {
@@ -41,7 +51,12 @@ export function App() {
         <input type="file" onChange={onFileChange} />
         <div>
           {socialPoints.map((entry) => (
-            <SocialCard key={entry.name} data={entry} />
+            <SocialCard
+              key={entry.name}
+              data={entry}
+              gifts={favoriteGifts[entry.name]}
+              matching={matchingGifts[entry.name]}
+            />
           ))}
         </div>
       </div>

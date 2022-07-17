@@ -364,7 +364,7 @@ export const giftPreferences = {
     ],
     neutralExceptions: [...fruitTreeFruitsWithoutBananaMango, "Salmonberry"],
   },
-  Elliot: {
+  Elliott: {
     lovedGifts: [
       ...universalLoves,
       "Crab Cakes",
