@@ -47,8 +47,10 @@ export function App() {
   return (
     <div className="App">
       <div>
-        <p>Upload your save file. Instructions here.</p>
+        <p>Upload your save file. Cards show social information and favorite villager gifts that you have available.</p>
         <input type="file" onChange={onFileChange} />
+        <br/>
+        <br/>
         <div>
           {socialPoints.map((entry) => (
             <SocialCard
