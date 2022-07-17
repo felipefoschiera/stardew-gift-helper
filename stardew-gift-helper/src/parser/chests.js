@@ -4,7 +4,6 @@ export const getAllChests = (locations) => {
   let allChests = [];
   for (const gameLocation of locations) {
     const objects = getLocationObjects(gameLocation);
-    console.log("got objects", objects);
     const chests = getLocationChests(objects);
     allChests = allChests.concat(chests);
   }

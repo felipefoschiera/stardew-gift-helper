@@ -10,7 +10,6 @@ export function App() {
 
   const startGameProcess = () => {
     const parsedFileContent = parseGameFileContent(fileContent);
-    console.log(getFavoriteGifts("Alex"));
     setSocialPoints(parsedFileContent.socialPoints);
   };
 
