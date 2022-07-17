@@ -5,7 +5,6 @@ export const getFavoriteGifts = (villager) => {
   const lovedGifts = villagerPreferences.lovedGifts.filter((gift) => {
     return !villagerPreferences.lovedExceptions.includes(gift);
   });
-
   const likedGifts = villagerPreferences.likedGifts.filter((gift) => {
     return !villagerPreferences.likedExceptions.includes(gift);
   });

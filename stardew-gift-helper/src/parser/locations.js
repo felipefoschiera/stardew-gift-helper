@@ -3,5 +3,8 @@ export const getGameLocations = (content) => {
 };
 
 export const getLocationObjects = (location) => {
-  return location["objects"]["item"];
+  const objects = location["objects"]["item"];
+  if (Array.isArray(objects)) return objects;
+  if (objects === undefined) return [];
+  return [objects];
 };
