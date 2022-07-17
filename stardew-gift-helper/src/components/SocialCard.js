@@ -22,11 +22,11 @@ export function SocialCard(props) {
 }
 
 const renderSocialHearts = (full, total) => {
-  const fullHearts = [...Array(full)].map(() => (
-    <img className="social-card-heart" src={FullHeart} />
+  const fullHearts = [...Array(full)].map((_, idx) => (
+    <img key={idx} className="social-card-heart" src={FullHeart} />
   ));
-  const emptyHearts = [...Array(total - full)].map(() => (
-    <img className="social-card-heart" src={EmptyHeart} />
+  const emptyHearts = [...Array(total - full)].map((_, idx) => (
+    <img key={full + idx} className="social-card-heart" src={EmptyHeart} />
   ));
   return fullHearts.concat(emptyHearts);
 };
