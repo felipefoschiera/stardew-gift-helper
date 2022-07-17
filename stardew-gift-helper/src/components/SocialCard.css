@@ -2,26 +2,29 @@
   display: flex;
 }
 
-.social-card-npc {
-  min-width: 190px;
-  flex: 1;
-  height: 50px;
+.social-card-piece {
+  min-height: 50px;
   display: flex;
-  align-items: center;
-  padding-left: 5px;
   margin: 2px;
   border: 1px solid black;
   background-color: white;
+  align-items: center;
+}
+
+.social-card-npc {
+  flex: 1;
+  min-width: 190px;
+  padding-left: 5px;
 }
 
 .social-card-gifts {
-  flex: 9;
-  height: 50px;
-  display: flex;
-  flex-wrap: wrap;
-  margin: 2px;
-  border: 1px solid black;
-  background-color: white;
+  flex: 14;
+
+}
+
+.social-card-optimal-gift {
+  max-width: 60px;
+  flex: 1;
 }
 
 .social-card-gift-list {

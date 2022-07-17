@@ -13,7 +13,7 @@ export function SocialCard(props) {
 
   return (
     <div className="social-card">
-      <div className="social-card-npc">
+      <div className="social-card-piece social-card-npc">
         <img className="social-card-avatar" src={getIcon(props.data.name)} />
         <div className="social-card-info">
           <p>{props.data.name}</p>
@@ -22,8 +22,10 @@ export function SocialCard(props) {
           </div>
         </div>
       </div>
-      <div className="social-card-gifts">
+      <div className="social-card-piece social-card-gifts">
         {renderMatchingGifts(matchingLoved, matchingLiked, matchingNeutral)}
+      </div>
+      <div className="social-card-piece social-card-optimal-gift">
       </div>
     </div>
   );
