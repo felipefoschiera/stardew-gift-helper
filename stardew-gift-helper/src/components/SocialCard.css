@@ -32,6 +32,7 @@
   flex-wrap: wrap;
 }
 
+
 .social-card-single-gift {
   border-radius: 6px;
   border: 1px solid black;
@@ -46,6 +47,7 @@
 
 .social-card-info {
   margin-left: 5px;
+  padding-bottom: 3px;
   text-align: left;
 }
 
@@ -59,6 +61,10 @@
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 2px;
+}
+
+.social-card-remaining-next-level {
+  font-size: 12px;
 }
 
 .social-card-heart {
