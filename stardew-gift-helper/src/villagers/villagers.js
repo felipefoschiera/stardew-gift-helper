@@ -30,5 +30,7 @@ export const Villagers = {
   Willy: "Willy",
   Wizard: "Wizard",
   Sandy: "Sandy",
-  Kent: "Kent"
+  Kent: "Kent",
+  Krobus: "Krobus",
+  Leo: "Leo"
 };
