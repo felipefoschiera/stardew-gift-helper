@@ -32,5 +32,5 @@ export const Villagers = {
   Sandy: "Sandy",
   Kent: "Kent",
   Krobus: "Krobus",
-  Leo: "Leo"
+  Leo: "Leo",
 };
