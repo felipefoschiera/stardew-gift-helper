@@ -806,7 +806,6 @@ interface GiftPreference {
   neutralExceptions: ReadonlyArray<Item>;
 }
 
-
 export const giftPreferences: ValueIndexer<Villagers, GiftPreference> = {
   Alex: {
     lovedGifts: [...universalLoves, Item.CompleteBreakfast, Item.SalmonDinner],
@@ -1095,6 +1094,57 @@ export const giftPreferences: ValueIndexer<Villagers, GiftPreference> = {
       Item.Melon,
       Item.Salmonberry,
       ...fruitTreeFruitsWithoutBananaMango,
+    ],
+  },
+  Emily: {
+    lovedGifts: [
+      ...universalLoves,
+      Item.Amethyst,
+      Item.Aquamarine,
+      Item.Cloth,
+      Item.Emerald,
+      Item.Jade,
+      Item.Ruby,
+      Item.SurvivalBurger,
+      Item.Topaz,
+      Item.Wool,
+    ],
+    lovedExceptions: [],
+    likedGifts: [...universalLikes, Item.Daffodil, Item.Quartz],
+    likedExceptions: [
+      Item.FishTaco,
+      Item.FriedEel,
+      Item.IceCream,
+      Item.MakiRoll,
+      Item.RicePudding,
+      Item.SalmonDinner,
+      Item.SpicyEel,
+      Item.Sashimi,
+    ],
+    neutralGifts: [
+      ...universalNeutrals,
+      ...eggs,
+      ...fruits,
+      Item.Milk,
+      Item.LargeMilk,
+      Item.Chanterelle,
+      Item.CommonMushroom,
+      Item.Dandelion,
+      Item.Ginger,
+      Item.Hazelnut,
+      Item.Leek,
+      Item.MagmaCap,
+      Item.Morel,
+      Item.PurpleMushroom,
+      Item.SnowYam,
+      Item.WildHorseradish,
+      Item.WinterRoot,
+    ],
+    neutralExceptions: [
+      Item.Wool,
+      Item.VoidEgg,
+      ...fruitTreeFruitsWithoutBananaMango,
+      Item.Salmonberry,
     ],
   },
 };
