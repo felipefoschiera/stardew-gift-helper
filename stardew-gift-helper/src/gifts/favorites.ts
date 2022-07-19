@@ -1,3 +1,6 @@
+import { ValueIndexer } from "../types";
+import { Villagers } from "../villagers";
+
 export enum Item {
   GoldenPumpkin = "Golden Pumpkin",
   MagicRockCandy = "Magic Rock Candy",
@@ -803,7 +806,8 @@ interface GiftPreference {
   neutralExceptions: ReadonlyArray<Item>;
 }
 
-export const giftPreferences: { [key: string]: GiftPreference } = {
+
+export const giftPreferences: ValueIndexer<Villagers, GiftPreference> = {
   Alex: {
     lovedGifts: [...universalLoves, Item.CompleteBreakfast, Item.SalmonDinner],
     lovedExceptions: [],
