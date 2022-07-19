@@ -2,6 +2,8 @@ import { getSocialPoints } from "./socialPoints";
 import { getPlayer, getPlayerItems } from "./player";
 import { getAllChests, getChestsItems } from "./chests";
 import { getGameLocations } from "./locations";
+import { getNPCBirthdays } from "./birthdays";
+import { getCurrentGameDay } from "./gameDay";
 
 var convert = require("xml-js");
 
@@ -23,9 +25,13 @@ export const parseGameFileContent = (fileContent) => {
   const socialPoints = getSocialPoints(converted);
   socialPoints.sort((a, b) => b.points - a.points);
 
+  const npcBirthdays = getNPCBirthdays();
+  const currentDay = getCurrentGameDay(converted);
   return {
     items: allItems,
     socialPoints: socialPoints,
+    npcBirthdays: npcBirthdays,
+    currentGameDay: currentDay,
   };
 };
 

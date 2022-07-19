@@ -10,10 +10,14 @@ export function App() {
   const [socialPoints, setSocialPoints] = useState([]);
   const [favoriteGifts, setFavoriteGifts] = useState({});
   const [matchingGifts, setMatchingGifts] = useState({});
+  const [npcBirthdays, setNpcBirthdays] = useState({});
+  const [currentDay, setCurrentDay] = useState({});
 
   const startGameProcess = () => {
     const parsedFileContent = parseGameFileContent(fileContent);
     setSocialPoints(parsedFileContent.socialPoints);
+    setNpcBirthdays(parsedFileContent.npcBirthdays);
+    setCurrentDay(parsedFileContent.currentGameDay);
     const allFavoriteGifts = getAllFavoriteGifts();
     setFavoriteGifts(allFavoriteGifts);
     const allMatchingGifts = getMatchingGifts(
@@ -61,6 +65,8 @@ export function App() {
               data={entry}
               gifts={favoriteGifts[entry.name]}
               matching={matchingGifts[entry.name]}
+              birthday={npcBirthdays[entry.name]}
+              currentDay={currentDay}
             />
           ))}
         </div>

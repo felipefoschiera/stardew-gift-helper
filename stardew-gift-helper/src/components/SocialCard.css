@@ -11,6 +11,11 @@
   align-items: center;
 }
 
+.social-card-name {
+  display: flex;
+  align-items: center;
+}
+
 .social-card-npc {
   flex: 1;
   min-width: 190px;
@@ -41,6 +46,10 @@
 
 .social-card-avatar {
   height: 30px;
+}
+
+.social-card-birthday-icon {
+  height: 28px;
 }
 
 .social-card-info {
