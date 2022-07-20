@@ -2,7 +2,7 @@ import "./App.css";
 import React, { useEffect, useState } from "react";
 import { parseGameFileContent } from "./parser/parseFile";
 import { getAllFavoriteGifts } from "./gifts/getFavorites";
-import { SocialCard } from "./components";
+import { BirthdayCard, SocialCard, WinterStar } from "./components";
 import { getMatchingGifts } from "./gifts/getMatching";
 
 export function App() {
@@ -59,14 +59,18 @@ export function App() {
           <input type="file" onChange={onFileChange} />
         </div>
         <div>
+          <BirthdayCard birthdays={npcBirthdays} currentDay={currentDay} />
+        </div>
+        <div>
+          <WinterStar currentDay={currentDay} />
+        </div>
+        <div>
           {socialPoints.map((entry) => (
             <SocialCard
               key={entry.name}
               data={entry}
               gifts={favoriteGifts[entry.name]}
               matching={matchingGifts[entry.name]}
-              birthday={npcBirthdays[entry.name]}
-              currentDay={currentDay}
             />
           ))}
         </div>

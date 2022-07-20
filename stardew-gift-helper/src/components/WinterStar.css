@@ -1,0 +1,12 @@
+.winter-star-card {
+  display: flex;
+  background-color: white;
+  border: solid 1px black;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  height: 50px;
+  padding: 8px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}

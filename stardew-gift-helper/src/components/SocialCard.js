@@ -11,11 +11,6 @@ export function SocialCard(props) {
   const fullHearts = Math.floor(props.data.points / POINTS_BY_HEART);
   const pointsToNextLevel = POINTS_BY_HEART - (props.data.points % 250);
 
-  const isBirthday =
-    props.birthday !== undefined &&
-    props.birthday.season === props.currentDay.season &&
-    props.birthday.day === props.currentDay.day;
-
   const matchingLoved = props.matching.lovedGifts;
   const matchingLiked = props.matching.likedGifts;
   const matchingNeutral = props.matching.neutralGifts;
@@ -27,7 +22,6 @@ export function SocialCard(props) {
         <div className="social-card-info">
           <div className="social-card-name">
             <p>{props.data.name}</p>
-            <div>{renderBirthday(isBirthday)}</div>
           </div>
           <div className="social-card-points">
             {renderSocialHearts(fullHearts)}
@@ -44,15 +38,6 @@ export function SocialCard(props) {
     </div>
   );
 }
-
-const renderBirthday = (isBirthday) => {
-  if (isBirthday) {
-    return (
-      <img className="social-card-birthday-icon" src={getBirthdayIcon()} />
-    );
-    return <div />;
-  }
-};
 
 const renderMatchingGifts = (lovedGifts, likedGifts, neutralGifts) => {
   const lovedItems = lovedGifts.map((gift, idx) => (
@@ -102,8 +87,4 @@ const getIcon = (name) => {
   } catch (err) {
     return require(`../assets/npcs/Linus_Icon.png`);
   }
-};
-
-const getBirthdayIcon = () => {
-  return require(`../assets/items/Party_Hat.png`);
 };
