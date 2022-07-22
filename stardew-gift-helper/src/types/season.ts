@@ -1,4 +1,4 @@
-import { ValueIndexer } from "./valueIndexer";
+import { PartialValueIndexer } from "./valueIndexer";
 
 export enum Season {
   Spring,
@@ -7,7 +7,7 @@ export enum Season {
   Winter,
 }
 
-const seasonIndexer: ValueIndexer<string, Season> = {
+const seasonIndexer: PartialValueIndexer<string, Season> = {
   ["spring"]: Season.Spring,
   ["summer"]: Season.Summer,
   ["fall"]: Season.Fall,

@@ -1,4 +1,4 @@
-import { ValueIndexer } from "../types";
+import { PartialValueIndexer } from "../types";
 import { Villagers } from "../villagers";
 
 export enum Item {
@@ -806,7 +806,7 @@ interface GiftPreference {
   neutralExceptions: ReadonlyArray<Item>;
 }
 
-export const giftPreferences: ValueIndexer<Villagers, GiftPreference> = {
+export const giftPreferences: PartialValueIndexer<Villagers, GiftPreference> = {
   Alex: {
     lovedGifts: [...universalLoves, Item.CompleteBreakfast, Item.SalmonDinner],
     lovedExceptions: [],
