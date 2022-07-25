@@ -1,5 +1,4 @@
 import { Villagers } from "../villagers";
-import { getPlayer } from "./player";
 
 export const getSocialPoints = (content) => {
   const player = getPlayer(content);
@@ -13,6 +12,10 @@ export const getSocialPoints = (content) => {
     }
   }
   return Object.values(friendshipLevels);
+};
+
+const getPlayer = (content) => {
+  return content["SaveGame"]["player"];
 };
 
 const getFriendships = (player) => {

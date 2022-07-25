@@ -1,7 +1,4 @@
 import { getSocialPoints } from "./socialPoints";
-import { getPlayer, getPlayerItems } from "./player";
-import { getAllChests, getChestsItems } from "./chests";
-import { getGameLocations } from "./locations";
 import { getNPCBirthdays } from "./birthdays";
 import { getCurrentGameDay } from "./gameDay";
 
@@ -21,7 +18,7 @@ export const parseGameFileContent = (fileContent) => {
     alwaysChildren: true,
   });
 
-  const allItems = getAllItems(converted);
+  const allItems = getEveryItem(converted);
   const socialPoints = getSocialPoints(converted);
   socialPoints.sort((a, b) => b.points - a.points);
 
@@ -35,27 +32,38 @@ export const parseGameFileContent = (fileContent) => {
   };
 };
 
-const getAllItems = (content) => {
-  const locations = getGameLocations(content);
-  const chests = getAllChests(locations);
-  const chestsItems = getChestsItems(chests);
+const getEveryItem = (content) => {
+  const gameSave = content["SaveGame"];
 
-  const player = getPlayer(content);
-  const playerItems = getPlayerItems(player);
-
-  return mergeAllMaps([chestsItems, playerItems]);
-};
-
-const mergeAllMaps = (maps) => {
-  const finalMap = new Map();
-  for (const map of maps) {
-    for (const item in map) {
-      if (!finalMap[item]) {
-        finalMap[item] = map[item];
-      } else {
-        finalMap[item] += map[item];
-      }
+  const items = recursiveGetItems("", gameSave, 0);
+  const allItems = new Map();
+  for (const item of items) {
+    const { name, quantity } = item;
+    if (!allItems[name]) {
+      allItems[name] = quantity;
+    } else {
+      allItems[name] += quantity;
     }
   }
-  return finalMap;
+  return allItems;
+};
+
+const recursiveGetItems = (key, object, ctr) => {
+  if (object === undefined) return [];
+  if (object["Stack"] !== undefined && object["Name"]["_text"] != "Chest") {
+    return [
+      {
+        name: object["Name"]["_text"],
+        quantity: parseInt(object["Stack"]["_text"]),
+      },
+    ];
+  }
+  let items = [];
+  for (const key of Object.keys(object)) {
+    if (typeof object === "object") {
+      const childItems = recursiveGetItems(key, object[key], ctr + 1);
+      items = items.concat(...childItems);
+    }
+  }
+  return items;
 };
