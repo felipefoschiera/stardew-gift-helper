@@ -1,13 +1,13 @@
-import { getLocationObjects } from "./locations";
+import {
+  getBuildingIndoorChests,
+  getLocationBuildings,
+  getLocationObjects,
+} from "./locations";
 
 export const getAllChests = (locations) => {
-  let allChests = [];
-  for (const gameLocation of locations) {
-    const objects = getLocationObjects(gameLocation);
-    const chests = getLocationChests(objects);
-    allChests = allChests.concat(chests);
-  }
-  return allChests;
+  const locationChests = getChestsFromLocations(locations);
+  const buildingChests = getChestsFromBuildings(locations);
+  return [...locationChests, ...buildingChests];
 };
 
 export const getChestsItems = (chests) => {
@@ -25,6 +25,26 @@ export const getChestsItems = (chests) => {
     }
   }
   return itemsMap;
+};
+
+const getChestsFromLocations = (locations) => {
+  let locationChests = [];
+  for (const gameLocation of locations) {
+    const objects = getLocationObjects(gameLocation);
+    const chests = getLocationChests(objects);
+    locationChests = locationChests.concat(chests);
+  }
+  return locationChests;
+};
+
+const getChestsFromBuildings = (locations) => {
+  let buildingChests = [];
+  for (const gameLocation of locations) {
+    const buildings = getLocationBuildings(gameLocation);
+    const chests = getBuildingIndoorChests(buildings);
+    buildingChests = buildingChests.concat(chests);
+  }
+  return buildingChests;
 };
 
 const getChestItems = (chest) => {
