@@ -50,7 +50,7 @@ const getEveryItem = (content) => {
 
 const recursiveGetItems = (key, object, ctr) => {
   if (object === undefined) return [];
-  if (object["Stack"] !== undefined && object["Name"]["_text"] != "Chest") {
+  if (object["Stack"] !== undefined && object["Name"]["_text"] !== "Chest") {
     return [
       {
         name: object["Name"]["_text"],
