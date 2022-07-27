@@ -9,8 +9,8 @@ export const getMatchingGifts = (items, villagerFavorites) => {
 const getMatchingItems = (items, favorites) => {
   const { lovedGifts, likedGifts, neutralGifts } = favorites;
   return {
-    lovedGifts: lovedGifts.filter((gift) => gift in items),
-    likedGifts: likedGifts.filter((gift) => gift in items),
-    neutralGifts: neutralGifts.filter((gift) => gift in items),
+    lovedGifts: lovedGifts.filter((gift) => items.has(gift)),
+    likedGifts: likedGifts.filter((gift) => items.has(gift)),
+    neutralGifts: neutralGifts.filter((gift) => items.has(gift)),
   };
 };
