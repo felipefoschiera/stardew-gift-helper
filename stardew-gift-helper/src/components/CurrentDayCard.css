@@ -1,0 +1,17 @@
+.current-day-card {
+  display: flex;
+  background-color: white;
+  border: solid 1px black;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  height: 30px;
+  width: 120px;
+  padding: 8px 4px 8px 4px;
+  margin: 4px;
+}
+
+.current-day-card img {
+  height: 35px;
+  padding-right: 5px;
+}

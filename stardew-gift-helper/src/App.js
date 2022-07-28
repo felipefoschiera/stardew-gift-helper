@@ -2,7 +2,12 @@ import "./App.css";
 import React, { useEffect, useState } from "react";
 import { parseGameFileContent } from "./parser/parseFile";
 import { getAllFavoriteGifts } from "./gifts/getFavorites";
-import { BirthdayCard, SocialCard, WinterStar } from "./components";
+import {
+  BirthdayCard,
+  CurrentDayCard,
+  SocialCard,
+  WinterStar,
+} from "./components";
 import { getMatchingGifts } from "./gifts/getMatching";
 
 export function App() {
@@ -51,6 +56,9 @@ export function App() {
   return (
     <div className="App">
       <div>
+        <div>
+          <CurrentDayCard currentDay={currentDay} />
+        </div>
         <div className="page-instructions">
           <p>
             Upload your save file. Cards show social information and favorite
@@ -58,6 +66,7 @@ export function App() {
           </p>
           <input type="file" onChange={onFileChange} />
         </div>
+
         <div>
           <BirthdayCard birthdays={npcBirthdays} currentDay={currentDay} />
         </div>
