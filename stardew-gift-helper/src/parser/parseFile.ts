@@ -11,6 +11,7 @@ export const parseGameFileContent = (fileContent: string) => {
   });
 
   const allItems = getEveryItem(converted);
+  console.log(allItems.size);
   const socialPoints = getSocialPoints(converted);
 
   const npcBirthdays = getNPCBirthdays();
@@ -35,7 +36,7 @@ const getEveryItem = (content: any): Map<string, number> => {
 
 const recursiveGetItems = (object: any): ReadonlyArray<FileItem> => {
   if (!isObject(object)) return [];
-  if (hasStack(object) && isNotChest(object)) {
+  if (hasStack(object) && isNotChest(object) && isEligible(object)) {
     return getSingleItemFromObject(object);
   }
   return Object.values(object).flatMap((childObject) =>
@@ -53,6 +54,13 @@ const hasStack = (object: any): boolean => {
 
 const isNotChest = (object: any): boolean => {
   return object["Name"]["_text"] !== "Chest";
+};
+
+const isEligible = (object: any): boolean => {
+  if (object["hasBeenInInventory"] !== undefined) {
+    return object["hasBeenInInventory"]["_text"] == "true";
+  }
+  return false;
 };
 
 const getSingleItemFromObject = (object: any): ReadonlyArray<FileItem> => {
