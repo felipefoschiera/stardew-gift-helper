@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/stardew-gift-helper/precache-manifest.83ac9c2754d5f9189785360ae10ef931.js"
+  "/stardew-gift-helper/precache-manifest.12c988ad4f08b197bc20966d5473fa16.js"
 );
 
 workbox.clientsClaim();
