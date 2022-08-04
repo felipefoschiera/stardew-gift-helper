@@ -16,8 +16,8 @@ export function BirthdayCard(props) {
   return (
     <div>
       {npcBirthday.map((npc) => (
-        <div className="birthday-card">
-          <img src={getBirthdayImage()} />
+        <div key={npc} className="birthday-card">
+          <img alt="Birthday" src={getBirthdayImage()} />
           <div>
             Today is {npc}'s birthday! Give them a gift for <b>8x</b> social
             points.

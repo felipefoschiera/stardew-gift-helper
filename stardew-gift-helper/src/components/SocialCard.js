@@ -10,6 +10,7 @@ const TOTAL_HEARTS = 10;
 export function SocialCard(props) {
   const fullHearts = Math.floor(props.data.points / POINTS_BY_HEART);
   const pointsToNextLevel = POINTS_BY_HEART - (props.data.points % 250);
+  const giftsThisWeek = props.data.giftsThisWeek;
 
   const matchingLoved = props.matching.lovedGifts;
   const matchingLiked = props.matching.likedGifts;
@@ -18,7 +19,11 @@ export function SocialCard(props) {
   return (
     <div className="social-card">
       <div className="social-card-piece social-card-npc">
-        <img className="social-card-avatar" src={getIcon(props.data.name)} />
+        <img
+          alt="Avatar"
+          className="social-card-avatar"
+          src={getIcon(props.data.name)}
+        />
         <div className="social-card-info">
           <div className="social-card-name">
             <p>{props.data.name}</p>
@@ -26,9 +31,10 @@ export function SocialCard(props) {
           <div className="social-card-points">
             {renderSocialHearts(fullHearts)}
           </div>
-          <div className="social-card-remaining-next-level">
+          <div className="social-card-additional-text">
             {pointsToNextLevel} points to next level.
           </div>
+          {renderGiftsGiven(giftsThisWeek)}
         </div>
       </div>
       <div className="social-card-piece social-card-gifts">
@@ -38,6 +44,19 @@ export function SocialCard(props) {
     </div>
   );
 }
+
+const renderGiftsGiven = (giftsThisWeek) => {
+  const bgColor = giftsThisWeek < 2 ? "white" : "#ffbeae";
+
+  return (
+    <div
+      className="social-card-additional-text"
+      style={{ backgroundColor: bgColor }}
+    >
+      {giftsThisWeek}/2 gifts given this week.
+    </div>
+  );
+};
 
 const renderMatchingGifts = (lovedGifts, likedGifts, neutralGifts) => {
   const lovedItems = lovedGifts.map((gift, idx) => (
@@ -73,10 +92,20 @@ const renderMatchingGifts = (lovedGifts, likedGifts, neutralGifts) => {
 
 const renderSocialHearts = (full) => {
   const fullHearts = [...Array(full)].map((_, idx) => (
-    <img key={idx} className="social-card-heart" src={FullHeart} />
+    <img
+      alt="Full Heart"
+      key={idx}
+      className="social-card-heart"
+      src={FullHeart}
+    />
   ));
   const emptyHearts = [...Array(TOTAL_HEARTS - full)].map((_, idx) => (
-    <img key={full + idx} className="social-card-heart" src={EmptyHeart} />
+    <img
+      alt="Empty Heart"
+      key={full + idx}
+      className="social-card-heart"
+      src={EmptyHeart}
+    />
   ));
   return fullHearts.concat(emptyHearts);
 };

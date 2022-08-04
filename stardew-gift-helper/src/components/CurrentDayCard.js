@@ -12,7 +12,7 @@ export function CurrentDayCard(props) {
   return (
     <div>
       <div className="current-day-card">
-        <img src={getCalendarImage()} />
+        <img alt="Calendar" src={getCalendarImage()} />
         <div>
           {getSeasonText(currentDay.season)} {currentDay.day}
         </div>

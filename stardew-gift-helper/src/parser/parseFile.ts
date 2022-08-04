@@ -11,7 +11,6 @@ export const parseGameFileContent = (fileContent: string) => {
   });
 
   const allItems = getEveryItem(converted);
-  console.log(allItems.size);
   const socialPoints = getSocialPoints(converted);
 
   const npcBirthdays = getNPCBirthdays();

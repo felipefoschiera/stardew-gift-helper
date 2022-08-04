@@ -16,7 +16,7 @@ export function WinterStar(props) {
   return (
     <div>
       <div className="winter-star-card">
-        <img src={getWinterStarImage()} />
+        <img alt="Winter Star" src={getWinterStarImage()} />
         <div>
           Today is the Feast of the Winter Star festival! Give gifts in the
           festival for <b>5x</b> social points.
@@ -27,7 +27,7 @@ export function WinterStar(props) {
 }
 
 const isWinterStar = (currentDay) => {
-  return currentDay.season == Season.Winter && currentDay.day == 25;
+  return currentDay.season === Season.Winter && currentDay.day === 25;
 };
 
 const validateProps = (props) => {

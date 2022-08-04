@@ -2,16 +2,13 @@ import { Villagers } from "../villagers";
 
 export const getSocialPoints = (content: any) => {
   const player = getPlayer(content);
-  const friendshipLevels = getFriendships(player);
+  const friendshipData = getFriendships(player);
   Object.keys(Villagers).forEach((npc) => {
-    if (!friendshipLevels.has(npc)) {
-      friendshipLevels.set(npc, 0);
+    if (!friendshipData.has(npc)) {
+      friendshipData.set(npc, { name: npc, points: 0, giftsThisWeek: 0 });
     }
   });
-  const socialPoints = Array.from(friendshipLevels, ([name, points]) => ({
-    name,
-    points,
-  }));
+  const socialPoints = Array.from(friendshipData.values());
   socialPoints.sort((a, b) => b.points - a.points);
   return socialPoints;
 };
@@ -20,9 +17,9 @@ const getPlayer = (content: any) => {
   return content["SaveGame"]["player"];
 };
 
-const getFriendships = (player: any): Map<string, number> => {
-  return getAllFriendshipInformation(player).reduce((res, { name, points }) => {
-    return res.set(name, points);
+const getFriendships = (player: any): Map<string, FriendshipInformation> => {
+  return getAllFriendshipInformation(player).reduce((res, info) => {
+    return res.set(info.name, info);
   }, new Map());
 };
 
@@ -42,10 +39,14 @@ const getFriendshipInformation = (object: any): FriendshipInformation => {
   return {
     name: object["key"]["string"]["_text"],
     points: parseInt(object["value"]["Friendship"]["Points"]["_text"]),
+    giftsThisWeek: parseInt(
+      object["value"]["Friendship"]["GiftsThisWeek"]["_text"]
+    ),
   };
 };
 
 interface FriendshipInformation {
   readonly name: string;
   readonly points: number;
+  readonly giftsThisWeek: number;
 }
