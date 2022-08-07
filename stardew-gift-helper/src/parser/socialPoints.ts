@@ -26,9 +26,17 @@ const getFriendships = (player: any): Map<string, FriendshipInformation> => {
 const getAllFriendshipInformation = (
   player: any
 ): ReadonlyArray<FriendshipInformation> => {
-  return getPlayerFriendshipData(player).flatMap((child: any) =>
+  let friendshipData = getPlayerFriendshipData(player).flatMap((child: any) =>
     getFriendshipInformation(child)
   );
+
+  const villagerNames = Object.values(Villagers).map((villager) =>
+    villager.toString()
+  );
+  friendshipData = friendshipData.filter((obj: FriendshipInformation) =>
+    villagerNames.includes(obj.name)
+  );
+  return friendshipData;
 };
 
 const getPlayerFriendshipData = (object: any): any => {
