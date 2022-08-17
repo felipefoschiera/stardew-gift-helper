@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "ee77b653a85615d3db12",
-    "url": "/stardew-gift-helper/static/css/main.46c1bf95.chunk.css"
+    "revision": "897331a5b3cf44e230b6",
+    "url": "/stardew-gift-helper/static/css/main.eae0320c.chunk.css"
   },
   {
-    "revision": "ee77b653a85615d3db12",
-    "url": "/stardew-gift-helper/static/js/main.ee77b653.chunk.js"
+    "revision": "897331a5b3cf44e230b6",
+    "url": "/stardew-gift-helper/static/js/main.897331a5.chunk.js"
   },
   {
     "revision": "05b503beb4d93191790c",
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/stardew-gift-helper/static/js/runtime~main.d32717cc.js"
   },
   {
-    "revision": "0b0a0c60ce13b41b047d4b2e6006af38",
+    "revision": "0e879621946297fb202234d7e128c842",
     "url": "/stardew-gift-helper/index.html"
   }
 ];
